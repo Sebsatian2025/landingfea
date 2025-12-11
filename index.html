@@ -1,23 +1,85 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
+  <!-- SIN lang, SIN title, SIN meta description, SIN viewport correcto -->
   <meta charset="utf-8">
-  <title>Sebastian Fernandez</title>
-  
-  <!-- CSS directo sin optimización -->
+  <meta name="viewport" content="width=800">
+
+  <!-- Favicon básico (sin tamaños ni nada) -->
+  <link rel="icon" href="assets/img/favicon-16x16.png">
+
+  <!-- CSS pesado y bloqueante -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/styles.min.css?h=a429e634741875727feb0ed37f2eeccf">
+
+  <!-- CSS extra que casi no se usa -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
-  
-  <!-- Scripts en el head (bloquean el renderizado) -->
+
+  <style>
+    /* Contraste malo a propósito */
+    body {
+      background-color: #f5f5f5;
+      color: #b5b5b5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .header {
+      background: #f5f5f5;
+      color: #c0c0c0;
+    }
+
+    a {
+      color: #c0c0c0;
+    }
+
+    .btn-outline-light {
+      color: #f5f5f5;
+      border-color: #f5f5f5;
+    }
+
+    .section-title {
+      font-size: 18px;
+    }
+
+    .philosophy-headline {
+      font-size: 20px;
+    }
+
+    .stats-section,
+    .philosophy-section,
+    .skills-section,
+    .contact-section {
+      padding: 60px 0;
+    }
+
+    /* Imágenes sin tamaño, para provocar CLS */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+
+  <!-- JS bloqueante en el head -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.min.js?h=b7b806f4f34b9961e509dd73fc3cf197"></script>
+
+  <!-- Script extra que no hace nada útil, solo bloquea -->
+  <script>
+    // Simular JS pesado
+    const wasteTime = () => {
+      const start = Date.now();
+      while (Date.now() - start < 800) {
+        Math.sqrt(Math.random() * 999999);
+      }
+    };
+    wasteTime();
+  </script>
 </head>
 
 <body>
   <div id="particles" class="philosophy-particles"></div>
-  
-  <!-- Loader sin optimización -->
+
   <div id="loader" class="loader">
     <div class="wrapper">
       <div class="circle"></div>
@@ -29,281 +91,348 @@
     </div>
   </div>
 
-  <!-- Header sin atributos de accesibilidad -->
   <header id="header" class="header">
-    <nav class="nav-container">
+    <nav class="nav-container d-flex justify-content-between align-items-center px-3">
+      <!-- Logo como texto genérico, sin jerarquía -->
       <a class="logo" href="#home">
         <span class="d-flex justify-content-center logo-text">
-          <span class="prism">Sebastian</span>
-          <span class="flux">Fernandez</span>
+          <span class="prism">SF</span>
+          <span class="flux">Web</span>
         </span>
       </a>
-      
-      <ul id="navMenu" class="nav-menu">
+
+      <ul id="navMenu" class="nav-menu list-unstyled d-flex gap-3 mb-0">
+        <!-- Enlaces sin descripciones adicionales -->
         <li><a class="nav-link active" href="#home">inicio</a></li>
         <li><a class="nav-link" href="#about">control</a></li>
         <li><a class="nav-link" href="#stats">resultados</a></li>
         <li><a class="nav-link" href="#services">servicios</a></li>
         <li><a class="nav-link" href="#skills">webs</a></li>
-        <li><a class="nav-link" href="#contact">Contacto</a></li>
+        <li><a class="nav-link" href="#contact">contacto</a></li>
       </ul>
-      
-      <div>
-        <div class="dropdown">
-          <button class="btn btn-sm border border-dark-subtle" data-bs-toggle="dropdown" style="background:var(--bs-primary);" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="icon-mundo">
-              <path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"></path>
-            </svg>
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" data-lang="es" href="#"><span class="me-2 fi fi-es"></span> Español </a>
-            <a class="dropdown-item" data-lang="en" href="#"><span class="me-2 fi fi-gb"></span> Inglés </a>
-          </div>
+
+      <!-- Botón idioma sin aria-label -->
+      <div class="dropdown">
+        <button class="btn btn-sm border border-dark-subtle" data-bs-toggle="dropdown" type="button">
+          🌐
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" data-lang="es" href="#"><span class="me-2 fi fi-es"></span> Español</a>
+          <a class="dropdown-item" data-lang="en" href="#"><span class="me-2 fi fi-gb"></span> Inglés</a>
         </div>
       </div>
-      
+
+      <!-- Toggle sin accesibilidad -->
       <div id="menuToggle" class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
     </nav>
   </header>
 
   <main>
+    <!-- HOME sin h1 -->
     <section id="home">
-      <div class="container pt-8">
+      <div class="container pt-5">
         <div class="prism-line"></div>
-        <h1 class="d-flex justify-content-center philosophy-headline">Diseño web</h1>
-        <p class="text-center philosophy-subheading">Actualiza tu sitio desde el celular, sin cuotas mensuales ni complicaciones técnicas.</p>
+        <!-- Antes era h1, ahora div para romper SEO/jerarquía -->
+        <div class="d-flex justify-content-center philosophy-headline">
+          Diseño web autogestionable
+        </div>
+        <p class="text-center philosophy-subheading">
+          Actualiza tu sitio desde el celular, sin cuotas mensuales ni complicaciones técnicas.
+        </p>
         <div class="prism-line"></div>
-        <div class="d-flex justify-content-center">
+
+        <div class="d-flex justify-content-center mt-4">
           <a class="justify-content-center scroll-btn" href="#about">
             <div class="scroll-btn-inner">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
-                <path d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"></path>
+              <!-- SVG sin label ni título -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="26" height="26" fill="currentColor">
+                <path
+                  d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z">
+                </path>
               </svg>
             </div>
           </a>
         </div>
+
+        <!-- Imagen grande sin alt ni lazy, arriba del fold -->
+        <div class="mt-4">
+          <img src="assets/img/Copilot_20251028_171543.webp?h=474054bd7f136c4accf72d390114c1c7">
+        </div>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="philosophy-section" id="about">
-      <div class="section-header">
-        <h2 class="mb-6 section-title" id="about3">Tu sitio, tus reglas</h2>
-        <p id="about2" class="section-subtitle">Actualiza desde donde quieras, sin depender de nadie. Rendimiento real para negocios reales.</p>
+      <div class="section-header text-center">
+        <!-- h2 usado, pero sin h1 en todo el documento -->
+        <h2 class="mb-3 section-title" id="about3">Tu sitio, tus reglas</h2>
+        <p id="about2" class="section-subtitle">
+          Actualiza desde donde quieras, sin depender de nadie. Rendimiento real para negocios reales.
+        </p>
       </div>
-      <div class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-grid d-xxl-grid flex-column align-content-center flex-wrap flex-sm-column align-content-sm-center flex-sm-wrap align-content-md-center flex-md-wrap p-6 philosophy-pillars" id="about1">
-        <div class="pillar">
+      <div
+        class="d-flex flex-column flex-md-row align-content-center flex-wrap p-4 philosophy-pillars"
+        id="about1">
+        <div class="pillar flex-fill p-3">
           <div class="pillar-icon"><span>📱</span></div>
           <h3 class="d-flex justify-content-center pillar-title">Autonomía total</h3>
-          <p class="pillar-description">Edita tu sitio directamente desde tu celular, sin depender de terceros ni conocimientos técnicos. Tú decides cuándo y cómo actualizar tu contenido.</p>
+          <p class="pillar-description">
+            Edita tu sitio directamente desde tu celular, sin depender de terceros ni conocimientos técnicos.
+          </p>
         </div>
-        <div class="pillar">
+        <div class="pillar flex-fill p-3">
           <div class="pillar-icon"><span>💸</span></div>
           <h3 class="justify-content-center pillar-title">Sin mensualidades</h3>
-          <p class="pillar-description">Paga una sola vez y obtén tu web lista para crecer contigo. Sin cuotas, sin contratos, sin sorpresas. Tu inversión, tu control.</p>
+          <p class="pillar-description">
+            Paga una sola vez y obtén tu web lista para crecer contigo. Sin cuotas, sin contratos.
+          </p>
         </div>
-        <div class="pillar">
+        <div class="pillar flex-fill p-3">
           <div class="pillar-icon"><span>⚡</span></div>
           <h3 class="pillar-title">Listo para crecer</h3>
-          <p class="pillar-description">Tu sitio está optimizado para escalar, adaptarse a nuevos contenidos y evolucionar con tu negocio. Siempre editable, siempre tuyo.</p>
+          <p class="pillar-description">
+            Tu sitio está listo para escalar y adaptarse a tu negocio.
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- STATS -->
     <section id="stats" class="stats-section">
-      <div class="section-header">
-        <h2 class="mb-6 section-title">Resultados reales, libertad total</h2>
-        <p class="section-subtitle">Más de 100 clientes gestionan su web sin intermediarios, editando desde el celular, sin cuotas mensuales y con entregas en menos de una semana. Tu sitio, tu control.</p>
+      <div class="section-header text-center">
+        <h2 class="mb-3 section-title">Resultados reales, libertad total</h2>
+        <p class="section-subtitle">
+          Más de 100 clientes gestionan su web sin intermediarios, editando desde el celular, sin cuotas mensuales.
+        </p>
       </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon"><span>🌍</span></div>
-          <div class="stat-number" data-target="120"><span>0</span></div>
-          <div class="stat-label"><span>Clientes independientes</span></div>
-          <p class="stat-description">Emprendedores, artistas y marcas personales que ahora gestionan su web sin depender de nadie.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><span>📲</span></div>
-          <div class="stat-number" data-target="90"><span>0</span></div>
-          <div class="stat-label"><span>% de edición móvil</span></div>
-          <p class="stat-description">La mayoría de los usuarios actualizan su sitio desde el celular, en cualquier momento y lugar.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><span>⏱️</span></div>
-          <div class="stat-number" data-target="7"><span>0</span></div>
-          <div class="stat-label"><span>Días promedio de entrega</span></div>
-          <p class="stat-description">Tu web lista en menos de una semana, sin procesos eternos ni complicaciones técnicas.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><span>🔓</span></div>
-          <div class="stat-number" data-target="0"><span>0</span></div>
-          <div class="stat-label"><span>Cuotas mensuales</span></div>
-          <p class="stat-description">Cero pagos recurrentes. Una sola inversión para tener tu web lista y editable para siempre.</p>
+      <div class="stats-grid container">
+        <div class="row g-3">
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3 text-center">
+              <div class="stat-icon"><span>🌍</span></div>
+              <div class="stat-number" data-target="120"><span>0</span></div>
+              <div class="stat-label"><span>Clientes independientes</span></div>
+              <p class="stat-description">
+                Emprendedores que gestionan su web sin depender de nadie.
+              </p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3 text-center">
+              <div class="stat-icon"><span>📲</span></div>
+              <div class="stat-number" data-target="90"><span>0</span></div>
+              <div class="stat-label"><span>% edición móvil</span></div>
+              <p class="stat-description">
+                La mayoría actualiza su sitio desde el celular.
+              </p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3 text-center">
+              <div class="stat-icon"><span>⏱️</span></div>
+              <div class="stat-number" data-target="7"><span>0</span></div>
+              <div class="stat-label"><span>Días de entrega</span></div>
+              <p class="stat-description">
+                Sitios listos en menos de una semana.
+              </p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3 text-center">
+              <div class="stat-icon"><span>🔓</span></div>
+              <div class="stat-number" data-target="0"><span>0</span></div>
+              <div class="stat-label"><span>Cuotas mensuales</span></div>
+              <p class="stat-description">
+                Una sola inversión para tener tu web lista.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES (con repetición innecesaria para “peso”) -->
     <section id="services" class="philosophy-section">
-      <div class="section-header">
-        <h2 class="p-6 section-title">Servicios que hacen que tu web funcione</h2>
-        <p class="section-subtitle">Desde diseño y contenido hasta SEO, soporte y hosting. Todo lo que necesitás para tener un sitio rápido, editable y listo para crecer.</p>
+      <div class="section-header text-center">
+        <h2 class="p-3 section-title">Servicios que hacen que tu web funcione</h2>
+        <p class="section-subtitle">
+          Diseño, contenido, SEO, soporte y hosting. Todo en un solo lugar.
+        </p>
       </div>
       <div class="auto-carousel">
-        <div class="p-5 pt-6 philosophy-pillars-services carousel-track">
-          <div class="pillar-servicios">
+        <div class="p-4 philosophy-pillars-services carousel-track d-flex flex-wrap">
+          <!-- Duplicado varias veces para sumar DOM y peso -->
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>🧠</span></div>
             <h3 class="pillar-title-services">AUTONOMÍA</h3>
           </div>
-          <div class="pillar-servicios">
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>🎨</span></div>
             <h3 class="pillar-title-services">DISEÑO</h3>
           </div>
-          <div class="pillar-servicios">
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>🚀</span></div>
             <h3 class="pillar-title-services">HOSTING</h3>
           </div>
-          <div class="pillar-servicios">
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>✍️</span></div>
             <h3 class="pillar-title-services">EDICIÓN</h3>
           </div>
-          <div class="pillar-servicios">
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>📈</span></div>
             <h3 class="pillar-title-services">SEO</h3>
           </div>
-          <div class="pillar-servicios">
+          <div class="pillar-servicios p-3">
             <div class="pillar-icon-services"><span>🛠️</span></div>
             <h3 class="pillar-title-services">SOPORTE</h3>
           </div>
-          <div class="pillar-servicios">
-            <div class="pillar-icon-services"><span>🧾</span></div>
-            <h3 class="pillar-title-services">DOMINIO</h3>
+
+          <!-- Repetidos -->
+          <div class="pillar-servicios p-3">
+            <div class="pillar-icon-services"><span>🧠</span></div>
+            <h3 class="pillar-title-services">AUTONOMÍA</h3>
           </div>
-          <div class="pillar-servicios">
-            <div class="pillar-icon-services"><span>🔐</span></div>
-            <h3 class="pillar-title-services">SEGURIDAD</h3>
+          <div class="pillar-servicios p-3">
+            <div class="pillar-icon-services"><span>🎨</span></div>
+            <h3 class="pillar-title-services">DISEÑO</h3>
           </div>
-          <div class="pillar-servicios">
-            <div class="pillar-icon-services"><span>⚙️</span></div>
-            <h3 class="pillar-title-services">OPTIMIZACIÓN</h3>
+          <div class="pillar-servicios p-3">
+            <div class="pillar-icon-services"><span>🚀</span></div>
+            <h3 class="pillar-title-services">HOSTING</h3>
           </div>
-          <div class="pillar-servicios">
-            <div class="pillar-icon-services"><span>📊</span></div>
-            <h3 class="pillar-title-services">ANÁLISIS</h3>
+          <div class="pillar-servicios p-3">
+            <div class="pillar-icon-services"><span>✍️</span></div>
+            <h3 class="pillar-title-services">EDICIÓN</h3>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SKILLS con imágenes sin alt ni lazy -->
     <section id="skills" class="skills-section">
       <div class="skills-container">
-        <div class="section-header">
-          <h2 class="section-title"><strong>Diseño autogestionablE</strong></h2>
-          <p class="section-subtitle">Webs que podés actualizar vos mismo: desde landing page hasta tiendas online y páginas corporativas.</p>
+        <div class="section-header text-center">
+          <h2 class="section-title">
+            <strong>Diseño autogestionable</strong>
+          </h2>
+          <p class="section-subtitle">
+            Webs que podés actualizar vos mismo: landing, tiendas y sitios corporativos.
+          </p>
         </div>
       </div>
-      <div class="blog-slider">
-        <div class="blog-slider__wrp swiper-wrapper">
-          <div class="blog-slider__item swiper-slide">
-            <div></div>
-            <!-- Imágenes sin lazy loading ni optimización -->
-            <div class="blog-slider__img">
-              <img class="img-fluid aspect-ratio-1x1" src="assets/img/Copilot_20251028_171543.webp?h=474054bd7f136c4accf72d390114c1c7">
+
+      <div class="blog-slider container">
+        <div class="blog-slider__wrp d-flex flex-column flex-md-row gap-4">
+          <div class="blog-slider__item">
+            <div class="blog-slider__img mb-3">
+              <img class="img-fluid aspect-ratio-1x1"
+                src="assets/img/Copilot_20251028_171543.webp?h=474054bd7f136c4accf72d390114c1c7">
             </div>
             <div class="blog-slider__content">
-              <span class="blog-slider__code">Landing Autogestionable</span>
+              <span class="blog-slider__code">Landing autogestionable</span>
               <div class="blog-slider__title"><span>Convierte visitas en clientes</span></div>
-              <div class="blog-slider__text"><span>Diseños modernos y optimizados para captar la atención de tus usuarios. Actualiza textos, imágenes, enlaces y colores fácilmente desde un panel visual, sin depender de nadie.</span></div>
-              <a class="btn btn-outline-light btn-lg" href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi landing editable</a>
+              <div class="blog-slider__text">
+                <span>Actualiza textos, imágenes, enlaces y colores fácilmente desde un panel visual.</span>
+              </div>
+              <a class="btn btn-outline-light btn-lg"
+                href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi landing</a>
             </div>
           </div>
-          <div class="blog-slider__item swiper-slide">
-            <div></div>
-            <div class="blog-slider__img">
-              <img class="img-fluid aspect-ratio-1x1" width="307" height="307" src="assets/img/Copilot_20251028_172810.webp?h=867f18a5a51e02eb29c5b5a11667595a">
+
+          <div class="blog-slider__item">
+            <div class="blog-slider__img mb-3">
+              <img class="img-fluid aspect-ratio-1x1"
+                src="assets/img/Copilot_20251028_172810.webp?h=867f18a5a51e02eb29c5b5a11667595a">
             </div>
             <div class="blog-slider__content">
               <span class="blog-slider__code">E‑commerce</span>
               <div class="blog-slider__title"><span>Vende en línea sin límites</span></div>
-              <div class="blog-slider__text"><span>Tiendas online rápidas, seguras y fáciles de gestionar. Incluyen un panel intuitivo para controlar stock, inventario y pedidos en tiempo real, junto con pasarelas de pago integradas y una experiencia de compra optimizada para que conviertas más visitas en ventas reales.</span></div>
-              <a class="btn btn-outline-light btn-lg" href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi tienda</a>
+              <div class="blog-slider__text">
+                <span>Controla stock, inventario y pedidos en tiempo real.</span>
+              </div>
+              <a class="btn btn-outline-light btn-lg"
+                href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi tienda</a>
             </div>
           </div>
-          <div class="blog-slider__item swiper-slide">
-            <div></div>
-            <div class="blog-slider__img">
-              <img class="aspect-ratio-1x1" src="assets/img/Copilot_20251028_173337.webp?h=85b2a5ef00a58fdbb3c210e1a155dc57">
+
+          <div class="blog-slider__item">
+            <div class="blog-slider__img mb-3">
+              <img class="img-fluid aspect-ratio-1x1"
+                src="assets/img/Copilot_20251028_173337.webp?h=85b2a5ef00a58fdbb3c210e1a155dc57">
             </div>
             <div class="blog-slider__content">
-              <span class="blog-slider__code">Sitio Corporativo</span>
-              <div class="blog-slider__title"><span>Proyecta la mejor imagen de tu empresa</span></div>
-              <div class="blog-slider__text"><span>Páginas empresariales claras, modernas y adaptadas a tu marca. Comunica profesionalismo, genera confianza y ofrece a tus clientes la información que necesitan para elegirte.</span></div>
-              <a class="btn btn-outline-light btn-lg" href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi sitio</a>
+              <span class="blog-slider__code">Sitio corporativo</span>
+              <div class="blog-slider__title"><span>Proyecta tu mejor versión</span></div>
+              <div class="blog-slider__text">
+                <span>Comunica profesionalismo y genera confianza.</span>
+              </div>
+              <a class="btn btn-outline-light btn-lg"
+                href="https://wa.me/34612469565?text=Hola%2C%20me%20interesa%20un%20sitio%20web.">Quiero mi sitio</a>
             </div>
           </div>
-          <div class="blog-slider__pagination"></div>
         </div>
       </div>
     </section>
 
+    <!-- DEMOS con video mal configurado -->
     <section id="demos" class="contact-section">
-      <div class="section-header">
+      <div class="section-header text-center">
         <h2 class="section-title"><strong>Edita, prueba y decide por ti mismo.</strong></h2>
-        <p class="section-subtitle">Edita textos, imágenes, colores y enlaces en tiempo real. Sin límites, sin complicaciones</p>
+        <p class="section-subtitle">
+          Edita textos, imágenes, colores y enlaces en tiempo real.
+        </p>
       </div>
-      <!-- Video sin optimización, autoplay sin considerar datos móviles -->
-      <div class="d-flex justify-content-center pb-6">
-        <video class="placeholder" width="560" height="315" autoplay loop muted poster="assets/img/website-under-construction-maintenance-warning-sign-jditfw38e4rksvzj.webp?h=ce5353af753b284e0a59f739736ca320" controls>
-          <source type="video/webm">
+      <div class="d-flex justify-content-center pb-4">
+        <!-- Video sin poster, autoplay y controls -->
+        <video width="900" height="520" autoplay loop muted controls>
+          <source src="assets/video/demo-large.webm" type="video/webm">
         </video>
       </div>
       <div class="d-flex justify-content-center contact-container">
         <a href="demos.html">
           <button type="button" style="width: 265px;">
-            <div class="svg-wrapper-1">
-              <div class="svg-wrapper">
-                <svg class="svg-icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                  <path fill="none" d="M0 0h24v24H0z"></path>
-                  <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
-                </svg>
-              </div>
-            </div>
             <span>Explorá el editor</span>
           </button>
         </a>
       </div>
     </section>
 
+    <!-- CONTACTO con problemas de accesibilidad -->
     <section id="contact" class="contact-section">
-      <div class="section-header">
+      <div class="section-header text-center">
         <h2 class="section-title">Hablemos</h2>
-        <p class="section-subtitle">Estoy aquí para escuchar tu proyecto y ayudarte a darle forma.</p>
+        <p class="section-subtitle">
+          Contá tu proyecto y vemos cómo avanzar.
+        </p>
       </div>
-      <div class="contact-container">
+      <div class="contact-container container">
+        <!-- Formulario SIN label y con solo placeholder (mal a propósito) -->
         <form id="contactForm" class="contact-form" action="https://formspree.io/f/mdkpqrvo" method="POST">
-          <div class="form-group">
-            <label for="name">Tu nombre</label>
-            <input type="text" id="name" name="name" required placeholder="Escribe tu nombre" />
+          <div class="form-group mb-3">
+            <input type="text" id="name" name="name" placeholder="Tu nombre">
           </div>
-          <div class="form-group">
-            <label for="email">Tu correo</label>
-            <input type="email" id="email" name="_replyto" required placeholder="ejemplo@correo.com" />
+          <div class="form-group mb-3">
+            <input type="email" id="email" name="_replyto" placeholder="Tu correo">
           </div>
-          <div class="form-group">
-            <label for="subject">Asunto</label>
-            <input type="text" id="subject" name="_subject" required placeholder="Motivo del mensaje" />
+          <div class="form-group mb-3">
+            <input type="text" id="subject" name="_subject" placeholder="Asunto">
           </div>
-          <div class="form-group">
-            <label for="message">Cuéntame tu mensaje</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Escribe aquí tu mensaje..."></textarea>
+          <div class="form-group mb-3">
+            <textarea id="message" name="message" rows="3" placeholder="Mensaje"></textarea>
           </div>
-          <input type="hidden" name="_next" value="https://www.sebastian-fernandez.com" />
-          <input type="hidden" name="_captcha" value="false" />
+
+          <!-- Campos ocultos -->
+          <input type="hidden" name="_next" value="https://www.sebastian-fernandez.com">
+          <input type="hidden" name="_captcha" value="false">
+
           <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-light btn-lg d-flex justify-content-center" type="submit">Enviar</button>
+            <button class="btn btn-outline-light btn-lg d-flex justify-content-center" type="submit">
+              Enviar
+            </button>
           </div>
+
           <p id="form-status" style="display:none; text-align:center; margin-top:10px; font-weight:500;"></p>
         </form>
       </div>
@@ -314,75 +443,96 @@
     <div class="container py-4 py-lg-5">
       <div class="section-header">
         <h2 class="section-title"><strong>Seguime en redes</strong></h2>
-        <p class="section-subtitle">Te muestro cómo trabajo, cómo diseño y cómo podés editar tu sitio.</p>
+        <p class="section-subtitle">
+          Te muestro cómo trabajo, cómo diseño y cómo podés editar tu sitio.
+        </p>
       </div>
       <ul class="list-inline footer-list">
+        <!-- Enlaces solo con iconos, sin texto accesible -->
         <li class="list-inline-item me-4 icono-footer">
           <a class="face" href="https://www.facebook.com/SebastianFernandezWeb/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook text-body face" style="font-size: 32px;">
-              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+              viewBox="0 0 16 16" class="bi bi-facebook text-body face">
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951">
+              </path>
             </svg>
           </a>
         </li>
         <li class="list-inline-item me-4 icono-footer">
           <a class="what" href="https://wa.me/34612469565">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-whatsapp text-body" style="font-size: 32px;">
-              <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+              viewBox="0 0 16 16" class="bi bi-whatsapp text-body">
+              <path
+                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
+              </path>
             </svg>
           </a>
         </li>
         <li class="list-inline-item icono-footer">
           <a href="https://www.instagram.com/sfpuntocom/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram text-body" style="font-size: 32px;">
-              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+              viewBox="0 0 16 16" class="bi bi-instagram text-body">
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334">
+              </path>
             </svg>
           </a>
         </li>
       </ul>
     </div>
+
     <p class="font-monospace d-flex flex-column align-items-stretch m-0">
       <a class="scroll-to-top" href="#home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
-          <path d="M246.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 109.3 361.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160zm160 352l-160-160c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 301.3 361.4 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="24" height="24" fill="currentColor">
+          <path
+            d="M246.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 109.3 361.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160zm160 352l-160-160c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 301.3 361.4 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3z">
+          </path>
         </svg>
       </a>
       SEBASTIAN FERNANDEZ | DISEÑADOR WEB
     </p>
+
     <div>
       <div class="prism-line-footer"></div>
     </div>
   </footer>
 
-  <!-- JavaScript inline sin optimización -->
+  <!-- JS inline sin defer -->
   <script>
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
       const status = document.getElementById('form-status');
       const data = new FormData(form);
+
       status.style.display = 'none';
       status.textContent = '';
+
       try {
         const response = await fetch(form.action, {
           method: form.method,
           body: data,
           headers: { Accept: 'application/json' }
         });
+
         if (response.ok) {
           form.reset();
           status.style.color = '#28a745';
-          status.textContent = '✅ ¡Tu mensaje fue enviado correctamente!';
+          status.textContent = '✅ Mensaje enviado';
           status.style.display = 'block';
         } else {
-          const resData = await response.json();
-          throw new Error(resData.error || 'Error desconocido');
+          status.style.color = '#dc3545';
+          status.textContent = '❌ Error al enviar';
+          status.style.display = 'block';
         }
       } catch (error) {
         status.style.color = '#dc3545';
-        status.textContent = '❌ Hubo un problema al enviar el mensaje. Intenta de nuevo.';
+        status.textContent = '❌ Hubo un problema. Intenta de nuevo.';
         status.style.display = 'block';
       }
     });
   </script>
 </body>
+
 </html>
